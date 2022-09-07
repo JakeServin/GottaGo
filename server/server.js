@@ -2,8 +2,10 @@ const express = require('express');
 const mongoose = require('mongoose');
 const PORT = process.env.PORT || 5500;
 const Router = require('./routes')
+const cors = require('cors')
 
 const app = express();
+app.use(cors({origin: '*'}))
 
 const username = "admin";
 const password = "digitalcrafts1234";
