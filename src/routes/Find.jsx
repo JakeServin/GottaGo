@@ -20,6 +20,10 @@ const center = {
 	lng: -98.493629,
 };
 
+var mapOptions = {
+	disableDoubleClickZoom: true, // <---
+};
+
 const Find = () => {
 	const { isLoaded } = useJsApiLoader({
 		id: "google-map-script",
@@ -60,7 +64,8 @@ const Find = () => {
 	};
 
 	return isLoaded ? (
-		<GoogleMap
+    <GoogleMap
+      options={mapOptions}
 			onDblClick={(e) => handleDblClick(e)}
 			mapContainerStyle={containerStyle}
 			center={center}
