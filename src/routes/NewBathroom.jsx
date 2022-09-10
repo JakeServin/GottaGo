@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Navigate, useSearchParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import icon from "../pictures/icon.png";
 import {
 	GoogleMap,
 	useJsApiLoader,
@@ -38,15 +39,27 @@ const NewBathroom = () => {
   };
 
   useEffect(() => {
-			setCenter({
-				lat: parseFloat(lat),
-				long: parseFloat(lng),
-			});
-			setNewMarker({
-				lat: parseFloat(lat),
-				long: parseFloat(lng),
-			});
-		}, [])
+    if (lat != null && lng != null) {
+      setCenter({
+        lat: parseFloat(lat),
+        long: parseFloat(lng),
+      });
+      setNewMarker({
+        lat: parseFloat(lat),
+        long: parseFloat(lng),
+      });
+    }
+    else {
+      setCenter({
+        lat: 29.424122,
+        lng: -98.493629,
+      });
+      setNewMarker({
+        lat: 29.424122,
+        lng: -98.493629,
+      })
+		}
+  }, [])
   
  
 
@@ -74,10 +87,6 @@ const NewBathroom = () => {
 		setMap(null);
   }, []);
 
-  const handleBathroomNameChange = (e) => {
-    setBathroomName()
-  }
-
   const handleSubmit = async() => {
     const newBathroom = {
       name: bathroomName,
@@ -97,23 +106,24 @@ const NewBathroom = () => {
 			<div className="container m-5 p-5">
 				<div className="row">
 					<div className="col">
-						<div className="form-floating mb-3">
+						<div className="form-floating my-3">
 							<input
-                type="text"
-                className="form-control"
-                id="floatingInput"
-                placeholder="Park Bathroom"
-                value={bathroomName}
-                onChange={e=> setBathroomName(e.target.value)}
-                
+								type="text"
+								className="form-control"
+								id="floatingInput"
+								placeholder="Park Bathroom"
+								value={bathroomName}
+								onChange={(e) =>
+									setBathroomName(e.target.value)
+								}
 							/>
 							<label for="floatingInput">Bathroom Name</label>
 						</div>
-            <select
-              value={type}
+						<select
+							value={type}
 							className="form-select form-select-l mb-3"
-              aria-label="Default select example"
-              onChange={e=> setType(e.target.value)}
+							aria-label="Default select example"
+							onChange={(e) => setType(e.target.value)}
 						>
 							<option selected>Select bathroom type</option>
 							<option value="Gas Station">Gas Station</option>
@@ -122,42 +132,56 @@ const NewBathroom = () => {
 							<option value="Other">Other</option>
 						</select>
 						<div className="form-floating mb-3">
-              <textarea
-                value={description}
+							<textarea
+								value={description}
 								className="form-control"
 								placeholder="Add a description..."
-                id="floatingTextarea2"
-                style={{ resize: "none", height:"150px" }}
-                rows="4"
-                onChange={e=> setDescription(e.target.value)}
+								id="floatingTextarea2"
+								style={{ resize: "none", height: "150px" }}
+								rows="4"
+								onChange={(e) => setDescription(e.target.value)}
 							/>
 							<label for="floatingTextarea2">
 								Add a description...
 							</label>
 						</div>
 						<div>
-							<a className="btn btn-success col-12" onClick={handleSubmit}>Submit</a>
+							<a
+								className="btn btn-success col-12"
+								onClick={handleSubmit}
+							>
+								Submit
+							</a>
 						</div>
 					</div>
 					<div className="col">
+						<h4>Right-Click to add bathroom</h4>
 						{isLoaded ? (
-              <GoogleMap
+							<GoogleMap
 								onRightClick={(e) => handleRightClick(e)}
 								mapContainerStyle={containerStyle}
 								center={center}
 								onLoad={onLoad}
-                onUnmount={onUnmount}
-                zoom={10}
+								onUnmount={onUnmount}
+								zoom={10}
 							>
 								{/* Child components, such as markers, info windows, etc. */}
 								{newMarker ? (
 									<Marker
+										icon={{
+											scaledSize:
+												new window.google.maps.Size(
+													50,
+													50
+												),
+											url: icon,
+										}}
 										position={{
 											lat: newMarker.lat,
-											lng: newMarker.long
+											lng: newMarker.long,
 										}}
 									/>
-								) : null}
+                ) : null}
 							</GoogleMap>
 						) : (
 							<></>
