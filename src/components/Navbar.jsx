@@ -25,19 +25,15 @@ const Navbar = () => {
                 id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item active">
-                        <a href="#" class="nav-link active">Home</a>
+                        <a href="/" class="nav-link active">Home</a>
                     </li>
                     <li class="nav-item active">
-                        <a href="#" class="nav-link">About</a>
+                        <a href="/about" class="nav-link">About</a>
                     </li>
-                    <li class="nav-item dropdown active">
-                        <a href="#" class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Find a Bathroom</a>
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a href="#" class="dropdown-item">Feature #1</a></li>
-                            <li><a href="#" class="dropdown-item">Feature #2</a></li>
-                            <li><a href="#" class="dropdown-item">Feature #3</a></li>
-                        </ul>
+                    <li class="nav-item active">
+                        <a href="/find" class="nav-link">Find a Bathroom</a>
                     </li>
+
                 </ul>
         </div>
         
