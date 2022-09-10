@@ -36,7 +36,7 @@ const Find = () => {
 	useEffect(() => {
 		const getBathrooms = async () => {
 			await axios
-				.get("http://127.0.0.1:5500/bathrooms")
+				.get("http://localhost:5500/bathrooms")
 				.then((res) => setMarkers(res.data));
 		};
 		getBathrooms();
