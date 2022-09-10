@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Marker, InfoWindow } from "@react-google-maps/api";
+import icon from "../pictures/icon.png";
 
 const divStyle = {
 	background: `white`,
@@ -22,6 +23,10 @@ const NewMarker = ({ marker }) => {
 			<Marker
 				onClick={handleClick}
 				key={marker.name}
+				icon={{
+					scaledSize: new window.google.maps.Size(50, 50),
+					url: icon,
+				}}
 				position={{
 					lat: marker.lat,
 					lng: marker.long,

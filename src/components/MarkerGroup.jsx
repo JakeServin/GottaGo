@@ -1,15 +1,14 @@
-import React, {useState} from 'react'
+import React, { useState } from 'react'
 import {
 	Marker,
 	InfoWindow,
 } from "@react-google-maps/api";
-
+import icon from '../pictures/icon.png'
 const divStyle = {
 	background: `white`,
 	border: `1px solid #ccc`,
 	padding: 15,
 };
-
 
 const MarkerGroup = ({ marker }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -26,6 +25,10 @@ const MarkerGroup = ({ marker }) => {
 			<Marker
 				onClick={handleClick}
 				key={marker.name}
+				icon={{
+					scaledSize: new window.google.maps.Size(50,50),
+					url: icon,
+				}}
 				position={{
 					lat: marker.lat,
 					lng: marker.long,
@@ -40,19 +43,21 @@ const MarkerGroup = ({ marker }) => {
 					}}
 				>
 					<div style={divStyle}>
-            <h3>{marker.name}</h3>
-            <p><strong>Type:</strong> {marker.type}</p>
+						<h3>{marker.name}</h3>
+						<p>
+							<strong>Type:</strong> {marker.type}
+						</p>
 						<p>{marker.description}</p>
-            <a
-              className='btn btn-info text-light me-3'
-              href={'#'}
+						{/* <a
+							className="btn btn-info text-light me-3"
+							href={"#"}
 							target="blank"
 						>
 							More info
-						</a>
-            <a
-              className='ms-auto btn btn-primary'
-              href={`https://www.google.com/maps/dir/?api=1&destination=${marker.lat}%2C${marker.long}`}
+						</a> */}
+						<a
+							className="ms-auto btn btn-primary"
+							href={`https://www.google.com/maps/dir/?api=1&destination=${marker.lat}%2C${marker.long}`}
 							target="blank"
 						>
 							Get Directions

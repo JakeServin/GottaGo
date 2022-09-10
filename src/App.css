@@ -9,6 +9,13 @@ html, body, #app, #app>div {
 .App {
   text-align: center;
 }
+@font-face {
+  font-family: mainFont;
+  src: url(../public/fonts/AirbnbCereal_W_Bk.otf);
+}
+* {
+  font-family: mainFont;
+}
 
 .App-logo {
   height: 40vmin;

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Wrapper, Status } from "@googlemaps/react-wrapper";
+import { Wrapper, Status, StandaloneSearchBox } from "@googlemaps/react-wrapper";
 import {
 	GoogleMap,
 	useJsApiLoader,
@@ -79,6 +79,7 @@ const Find = () => {
 					})}
 					{newMarker ? <NewMarker marker={newMarker} /> : null}
 				</>
+				
 			</GoogleMap>
 		</div>
 	) : (
