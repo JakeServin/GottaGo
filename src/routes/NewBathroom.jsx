@@ -1,28 +1,29 @@
 import React, { useState, useEffect } from "react";
-import { useSearchParams } from "react-router-dom";
+import { Navigate, useSearchParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import {
 	GoogleMap,
 	useJsApiLoader,
 	Marker,
 } from "@react-google-maps/api";
-
-var mapOptions = {
-	disableDoubleClickZoom: true, // <---
-};
+import axios from "axios";
 
 
 const NewBathroom = () => {
   const [map, setMap] = React.useState(null);
-  const [newMarker, setNewMarker] = useState();
-  const [center, setCenter] = useState({
-		lat: 29.424122,
-		lng: -98.493629,
-  });
-	
+  const [newMarker, setNewMarker] = useState({});
+  const [bathroomName, setBathroomName] = useState('');
+  const [description, setDescription] = useState('');
+  const [type, setType] = useState('')
   const [searchParams, setSearchParams] = useSearchParams();
   const lat = searchParams.get('lat')
   const lng = searchParams.get('lng')
-  console.log(lat, lng)
+  const [center, setCenter] = useState({
+		lat: parseFloat(lat),
+		lng: parseFloat(lng),
+  });
+  const navigate = useNavigate();
+
 	
 
   const { isLoaded } = useJsApiLoader({
@@ -37,34 +38,30 @@ const NewBathroom = () => {
   };
 
   useEffect(() => {
-    if (lat == null || lng == null) {
-		setCenter({
-			lat: 29.424122,
-			lng: -98.493629,
-		});
-		setNewMarker({
-			lat: 29.424122,
-			lng: -98.493629,
-		});
-	} else {
-		setCenter({
-			lat: parseFloat(lat),
-			lng: parseFloat(lng),
-		});
-		setNewMarker({
-			lat: parseFloat(lat),
-			lng: parseFloat(lng),
-		});
-	}
-  }, [])
+			setCenter({
+				lat: parseFloat(lat),
+				long: parseFloat(lng),
+			});
+			setNewMarker({
+				lat: parseFloat(lat),
+				long: parseFloat(lng),
+			});
+		}, [])
   
+ 
 
-  const handleDblClick = (e) => {
+ 
+
+  const handleRightClick = (e) => {
+    console.log(e.latLng.lng());
+    setCenter({
+		lat: e.latLng.lat(),
+		long: e.latLng.lng(),
+	});
 		setNewMarker({
 			lat: e.latLng.lat(),
 			long: e.latLng.lng(),
 		});
-	  e.preventDefault()
   };
 
   const onLoad = React.useCallback(function callback(map) {
@@ -77,6 +74,23 @@ const NewBathroom = () => {
 		setMap(null);
   }, []);
 
+  const handleBathroomNameChange = (e) => {
+    setBathroomName()
+  }
+
+  const handleSubmit = async() => {
+    const newBathroom = {
+      name: bathroomName,
+      type: type,
+      lat: center.lat,
+      long: center.long,
+      description: description
+    }
+    console.log(newBathroom)
+    const response = await axios.post("http://localhost:5500/newbathroom", newBathroom).then(res=> res.data);
+    if (response != null) navigate('/find')
+  }
+
 	return (
 		<div>
 			<h1 className="">Add new bathroom</h1>
@@ -85,55 +99,62 @@ const NewBathroom = () => {
 					<div className="col">
 						<div className="form-floating mb-3">
 							<input
-								type="text"
-								className="form-control"
-								id="floatingInput"
-								placeholder="Park Bathroom"
+                type="text"
+                className="form-control"
+                id="floatingInput"
+                placeholder="Park Bathroom"
+                value={bathroomName}
+                onChange={e=> setBathroomName(e.target.value)}
+                
 							/>
 							<label for="floatingInput">Bathroom Name</label>
 						</div>
-						<select
+            <select
+              value={type}
 							className="form-select form-select-l mb-3"
-							aria-label="Default select example"
+              aria-label="Default select example"
+              onChange={e=> setType(e.target.value)}
 						>
 							<option selected>Select bathroom type</option>
-							<option value="1">Gas Station</option>
-							<option value="2">Store</option>
-							<option value="3">Park</option>
-							<option value="4">Other</option>
+							<option value="Gas Station">Gas Station</option>
+							<option value="Store">Store</option>
+							<option value="Park">Park</option>
+							<option value="Other">Other</option>
 						</select>
 						<div className="form-floating mb-3">
-							<textarea
+              <textarea
+                value={description}
 								className="form-control"
-								placeholder="Leave a comment here"
+								placeholder="Add a description..."
                 id="floatingTextarea2"
                 style={{ resize: "none", height:"150px" }}
                 rows="4"
-							></textarea>
+                onChange={e=> setDescription(e.target.value)}
+							/>
 							<label for="floatingTextarea2">
 								Add a description...
 							</label>
 						</div>
 						<div>
-							<a className="btn btn-success col-12">Submit</a>
+							<a className="btn btn-success col-12" onClick={handleSubmit}>Submit</a>
 						</div>
 					</div>
 					<div className="col">
 						{isLoaded ? (
               <GoogleMap
-                options={mapOptions}
-								onDblClick={(e) => handleDblClick(e)}
+								onRightClick={(e) => handleRightClick(e)}
 								mapContainerStyle={containerStyle}
 								center={center}
 								onLoad={onLoad}
-								onUnmount={onUnmount}
+                onUnmount={onUnmount}
+                zoom={10}
 							>
 								{/* Child components, such as markers, info windows, etc. */}
 								{newMarker ? (
 									<Marker
 										position={{
 											lat: newMarker.lat,
-											lng: newMarker.long,
+											lng: newMarker.long
 										}}
 									/>
 								) : null}

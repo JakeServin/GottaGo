@@ -21,7 +21,6 @@ const center = {
 };
 
 var mapOptions = {
-	disableDoubleClickZoom: true, // <---
 };
 
 const Find = () => {
@@ -54,7 +53,7 @@ const Find = () => {
 		setMap(null);
 	}, []);
 
-	const handleDblClick = (e) => {
+	const handleRightClick = (e) => {
     setNewMarker({
 		name: "Add new bathroom here",
 		lat: e.latLng.lat(),
@@ -64,24 +63,24 @@ const Find = () => {
 	};
 
 	return isLoaded ? (
-    <GoogleMap className="body"
-      options={mapOptions}
-			onDblClick={(e) => handleDblClick(e)}
-			mapContainerStyle={containerStyle}
-			center={center}
-			onLoad={onLoad}
-			onUnmount={onUnmount}
-		>
-			{/* Child components, such as markers, info windows, etc. */}
-			<>
-				{markers.map((marker) => {
-					return <MarkerGroup marker={marker} />;
-        })}
-        {
-          newMarker ? (<NewMarker marker={ newMarker } />) : null
-        }
-			</>
-		</GoogleMap>
+		<div style={{ height: "100%" }}>
+			<GoogleMap
+				className="body"
+				options={mapOptions}
+				onRightClick={(e) => handleRightClick(e)}
+				mapContainerStyle={containerStyle}
+				onLoad={onLoad}
+				onUnmount={onUnmount}
+			>
+				{/* Child components, such as markers, info windows, etc. */}
+				<>
+					{markers.map((marker) => {
+						return <MarkerGroup marker={marker} />;
+					})}
+					{newMarker ? <NewMarker marker={newMarker} /> : null}
+				</>
+			</GoogleMap>
+		</div>
 	) : (
 		<></>
 	);
