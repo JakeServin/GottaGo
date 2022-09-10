@@ -64,7 +64,7 @@ const Find = () => {
 	};
 
 	return isLoaded ? (
-    <GoogleMap
+    <GoogleMap className="body"
       options={mapOptions}
 			onDblClick={(e) => handleDblClick(e)}
 			mapContainerStyle={containerStyle}

@@ -10,17 +10,17 @@ import NewBathroom from './routes/NewBathroom';
 
 function App() {
   return (
-    <BrowserRouter>
-      <Navbar />
-      <Routes>
-        <Route path='/' element={<Home/>}/>
-        <Route path='/about' element={<About/>}/>
-        <Route path='/find' element={<Find/>}/>
-        <Route path='/bathroominfo' element={<BathroomInfo/>}/>
-        <Route path='/newbathroom' element={<NewBathroom/>}/>
-      </Routes>
-      <Footer/>
-    </BrowserRouter>
+		<BrowserRouter>
+			<Navbar />
+			<Routes>
+					<Route path="/" element={<Home />} />
+					<Route path="/about" element={<About />} />
+					<Route path="/find" element={<Find />} />
+					<Route path="/bathroominfo" element={<BathroomInfo />} />
+					<Route path="/newbathroom" element={<NewBathroom />} />
+			</Routes>
+			<Footer />
+		</BrowserRouter>
   );
 }
 

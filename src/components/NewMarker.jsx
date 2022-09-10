@@ -40,7 +40,7 @@ const NewMarker = ({ marker }) => {
 						<p>Click the button below to share a new bathroom!</p>
 						<a
 							className="ms-auto btn btn-success"
-							href={`https://www.google.com/maps/dir/?api=1&destination=${marker.lat}%2C${marker.long}`}
+							href={`/newbathroom?lat=${marker.lat}&lng=${marker.long}`}
 							target="blank"
 						>
 							Add new bathroom

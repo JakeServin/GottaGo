@@ -1,9 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useSearchParams } from "react-router-dom";
 import {
 	GoogleMap,
 	useJsApiLoader,
 	Marker,
-	InfoWindow,
 } from "@react-google-maps/api";
 
 var mapOptions = {
@@ -14,6 +14,16 @@ var mapOptions = {
 const NewBathroom = () => {
   const [map, setMap] = React.useState(null);
   const [newMarker, setNewMarker] = useState();
+  const [center, setCenter] = useState({
+		lat: 29.424122,
+		lng: -98.493629,
+  });
+	
+  const [searchParams, setSearchParams] = useSearchParams();
+  const lat = searchParams.get('lat')
+  const lng = searchParams.get('lng')
+  console.log(lat, lng)
+	
 
   const { isLoaded } = useJsApiLoader({
     id: "google-map-script",
@@ -26,18 +36,35 @@ const NewBathroom = () => {
     borderRadius: "5px"
   };
 
-  const center = {
-		lat: 29.424122,
-		lng: -98.493629,
-  };
+  useEffect(() => {
+    if (lat == null || lng == null) {
+		setCenter({
+			lat: 29.424122,
+			lng: -98.493629,
+		});
+		setNewMarker({
+			lat: 29.424122,
+			lng: -98.493629,
+		});
+	} else {
+		setCenter({
+			lat: parseFloat(lat),
+			lng: parseFloat(lng),
+		});
+		setNewMarker({
+			lat: parseFloat(lat),
+			lng: parseFloat(lng),
+		});
+	}
+  }, [])
+  
 
   const handleDblClick = (e) => {
 		setNewMarker({
-			name: "Add new bathroom here",
 			lat: e.latLng.lat(),
 			long: e.latLng.lng(),
-			description: "Click here to add a new bathroom",
 		});
+	  e.preventDefault()
   };
 
   const onLoad = React.useCallback(function callback(map) {
