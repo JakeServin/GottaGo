@@ -12,7 +12,7 @@ import NewMarker from "../components/NewMarker";
 
 const containerStyle = {
 	width: "100vw",
-	height: "100vh",
+	height: "90vh",
 };
 
 const center = {
