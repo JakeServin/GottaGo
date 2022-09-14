@@ -5,14 +5,15 @@ import icon from "../pictures/icon.png";
 import {
 	GoogleMap,
 	useJsApiLoader,
-	Marker,
+  Marker,
+  LoadScript,
+  StandaloneSearchBox
 } from "@react-google-maps/api";
 import axios from "axios";
 
 
 const NewBathroom = () => {
   const [map, setMap] = React.useState(null);
-  const [newMarker, setNewMarker] = useState({});
   const [bathroomName, setBathroomName] = useState('');
   const [description, setDescription] = useState('');
   const [type, setType] = useState('')
@@ -20,17 +21,15 @@ const NewBathroom = () => {
   const lat = searchParams.get('lat')
   const lng = searchParams.get('lng')
   const [center, setCenter] = useState({
-		lat: parseFloat(lat),
+    lat: parseFloat(lat),
 		lng: parseFloat(lng),
   });
-  const navigate = useNavigate();
-
-	
-
-  const { isLoaded } = useJsApiLoader({
-    id: "google-map-script",
-    googleMapsApiKey: "AIzaSyDXZWVRUBqSZpQk8uAqlPqxjZrQ6i45yCc",
+  const [newMarker, setNewMarker] = useState({
+    lat: parseFloat(lat),
+    lng: parseFloat(lng),
   });
+  const navigate = useNavigate();
+  const isLoaded = true;
 
   const containerStyle = {
 		width: "100%",
@@ -42,11 +41,11 @@ const NewBathroom = () => {
     if (lat != null && lng != null) {
       setCenter({
         lat: parseFloat(lat),
-        long: parseFloat(lng),
+        lng: parseFloat(lng),
       });
       setNewMarker({
         lat: parseFloat(lat),
-        long: parseFloat(lng),
+        lng: parseFloat(lng),
       });
     }
     else {
@@ -54,10 +53,6 @@ const NewBathroom = () => {
         lat: 29.424122,
         lng: -98.493629,
       });
-      setNewMarker({
-        lat: 29.424122,
-        lng: -98.493629,
-      })
 		}
   }, [])
   
@@ -66,22 +61,14 @@ const NewBathroom = () => {
  
 
   const handleRightClick = (e) => {
-    console.log(e.latLng.lng());
-    setCenter({
-		lat: e.latLng.lat(),
-		long: e.latLng.lng(),
-	});
+  
 		setNewMarker({
 			lat: e.latLng.lat(),
-			long: e.latLng.lng(),
+			lng: e.latLng.lng(),
 		});
   };
 
-  const onLoad = React.useCallback(function callback(map) {
-		const bounds = new window.google.maps.LatLngBounds(center);
-		map.fitBounds(bounds);
-		setMap(map);
-  }, []);
+  
 
   const onUnmount = React.useCallback(function callback(map) {
 		setMap(null);
@@ -91,14 +78,17 @@ const NewBathroom = () => {
     const newBathroom = {
       name: bathroomName,
       type: type,
-      lat: center.lat,
-      long: center.long,
+      lat: newMarker.lat,
+      long: newMarker.lng,
       description: description
     }
     console.log(newBathroom)
     const response = await axios.post("http://localhost:5500/newbathroom", newBathroom).then(res=> res.data);
     if (response != null) navigate('/find')
   }
+  var mapOptions = {
+		zoom: 18,
+  };
 
 	return (
 		<div>
@@ -157,32 +147,36 @@ const NewBathroom = () => {
 					<div className="col">
 						<h4>Right-Click to add bathroom</h4>
 						{isLoaded ? (
-							<GoogleMap
-								onRightClick={(e) => handleRightClick(e)}
-								mapContainerStyle={containerStyle}
-								center={center}
-								onLoad={onLoad}
-								onUnmount={onUnmount}
-								zoom={10}
+							<LoadScript
+								googleMapsApiKey="AIzaSyDXZWVRUBqSZpQk8uAqlPqxjZrQ6i45yCc"
+								libraries={["places"]}
 							>
-								{/* Child components, such as markers, info windows, etc. */}
-								{newMarker ? (
-									<Marker
-										icon={{
-											scaledSize:
-												new window.google.maps.Size(
-													50,
-													50
-												),
-											url: icon,
-										}}
-										position={{
-											lat: newMarker.lat,
-											lng: newMarker.long,
-										}}
-									/>
-                ) : null}
-							</GoogleMap>
+								<GoogleMap
+									options={mapOptions}
+									onRightClick={(e) => handleRightClick(e)}
+									mapContainerStyle={containerStyle}
+									onUnmount={onUnmount}
+									center={center}
+								>
+									{/* Child components, such as markers, info windows, etc. */}
+									{newMarker ? (
+										<Marker
+											icon={{
+												// scaledSize:
+												// 	new window.google.maps.Size(
+												// 		50,
+												// 		50
+												// 	),
+												// url: icon,
+											}}
+											position={{
+												lat: newMarker.lat,
+												lng: newMarker.lng,
+											}}
+										/>
+									) : null}
+								</GoogleMap>
+							</LoadScript>
 						) : (
 							<></>
 						)}
