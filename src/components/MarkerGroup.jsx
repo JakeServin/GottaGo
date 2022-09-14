@@ -6,7 +6,6 @@ import {
 import icon from '../pictures/icon.png'
 const divStyle = {
 	background: `white`,
-	border: `1px solid #ccc`,
 	padding: 15,
 };
 
