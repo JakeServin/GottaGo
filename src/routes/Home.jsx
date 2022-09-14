@@ -6,8 +6,8 @@ import picture6 from "../../src/pictures/review.png"
 
 const Home = () => {
   return (
-    <div class="container content-div">
-      <div>
+    <div class="content-div">
+      <div className='container'>
         <div id="home">
           <div class="row mt-4 rounded">
             <div class="col-lg-5">
@@ -18,7 +18,7 @@ const Home = () => {
               </div>
             </div>
             <div class="col-lg-7">
-              <img src={picture3} height="400" width="auto" alt='map picture' class='img-thumbail rounded'/>
+              <img src={picture3} height="auto" width="100%" alt='map picture' class='img-thumbail rounded'/>
             </div>
             <div class="howitworks container text-center">
               <h1>How GottaGo Works</h1>
