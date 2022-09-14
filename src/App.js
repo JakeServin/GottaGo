@@ -11,15 +11,17 @@ import NewBathroom from './routes/NewBathroom';
 function App() {
   return (
 		<BrowserRouter>
-			<Navbar />
-			<Routes>
+			<div className='body'>
+				<Navbar />
+				<Routes>
 					<Route path="/" element={<Home />} />
 					<Route path="/about" element={<About />} />
 					<Route path="/find" element={<Find />} />
 					<Route path="/bathroominfo" element={<BathroomInfo />} />
 					<Route path="/newbathroom" element={<NewBathroom />} />
-			</Routes>
-			<Footer />
+				</Routes>
+				<Footer />
+			</div>
 		</BrowserRouter>
   );
 }
