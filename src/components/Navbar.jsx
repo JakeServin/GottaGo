@@ -1,4 +1,5 @@
 import React from 'react'
+import picture7 from "../../src/pictures/icon.png"
 
 const Navbar = () => {
   return (
@@ -6,7 +7,7 @@ const Navbar = () => {
         <div class="container">
             <a href="#" class="navbar-brand mb-0 h1"><img 
                 class="d-inline-block align-top"
-                src="https://getbootstrap.com/docs/5.0/assets/brand/bootstrap-logo.svg" width="30" height="30"/>
+                src={picture7} width="30" height="30"/>
                 Gotta Go
             </a>
             <button 
