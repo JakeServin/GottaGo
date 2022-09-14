@@ -12,9 +12,11 @@ import axios from "axios";
 import MarkerGroup from "../components/MarkerGroup";
 import NewMarker from "../components/NewMarker";
 
+const Libraries = ['places']
+
 const containerStyle = {
 	width: "100vw",
-	height: "90vh",
+	height: "100%",
 };
 
 let center = {
@@ -22,7 +24,7 @@ let center = {
 	lng: -98.493629,
 };
 
-var mapOptions = {
+let mapOptions = {
 	zoom: 15,
 };
 
@@ -36,8 +38,9 @@ const Find = () => {
 		lat: 29.424122,
 		lng: -98.493629,
 	});
-
+	const [zoom, setZoom] = useState(15)
 	const [markers, setMarkers] = useState([]);
+
 	useEffect(() => {
 		const getBathrooms = async () => {
 			await axios
@@ -45,7 +48,6 @@ const Find = () => {
 				.then((res) => setMarkers(res.data));
 		};
 		getBathrooms();
-		console.log(markers);
 	}, []);
 
 	
@@ -74,6 +76,7 @@ const Find = () => {
 					lat: res.data.data[0].latitude,
 					lng: res.data.data[0].longitude,
 				});
+				setZoom(15)
 				console.log(center);
 			});
 	}
@@ -81,65 +84,77 @@ const Find = () => {
 	
 
 	return isLoaded ? (
-		<LoadScript
-			googleMapsApiKey="AIzaSyDXZWVRUBqSZpQk8uAqlPqxjZrQ6i45yCc"
-			libraries={["places"]}
-		>
-			<GoogleMap
-				className="body"
-				options={mapOptions}
-				onRightClick={(e) => handleRightClick(e)}
-				mapContainerStyle={containerStyle}
-				onUnmount={onUnmount}
-				center={center}
+		<div className="content-div">
+			<LoadScript
+				googleMapsApiKey="AIzaSyDXZWVRUBqSZpQk8uAqlPqxjZrQ6i45yCc"
+				libraries={Libraries}
 			>
-				{/* Child components, such as markers, info windows, etc. */}
-				<>
-					{markers.map((marker) => {
-						return (
-							<MarkerGroup key={marker.name} marker={marker} />
-						);
-					})}
-					{newMarker ? <NewMarker marker={newMarker} /> : null}
-				</>
-				<StandaloneSearchBox
+				<GoogleMap
+					className="body"
+					options={mapOptions}
+					onRightClick={(e) => handleRightClick(e)}
+					mapContainerStyle={containerStyle}
+					onUnmount={onUnmount}
+					center={center}
+					zoom={zoom}
 				>
-					<div className="ms-auto text-center">
-						<input
-							className="mt-1 form-input "
-							type="text"
-							placeholder="Search for your location"
-							value={search}
-							onChange={(e) => setSearch(e.target.value)}
-							onBlur={(e) => setSearch(e.target.value)}
-							style={{
-								boxSizing: `border-box`,
-								border: `1px solid transparent`,
-								width: `240px`,
-								height: `32px`,
-								padding: `0 12px`,
-								borderRadius: `3px`,
-								boxShadow: `0 2px 6px rgba(0, 0, 0, 0.3)`,
-								fontSize: `14px`,
-								outline: `none`,
-								textOverflow: `ellipses`,
-								position: "relative",
-
-							}}
-						/>
-						<button
-							className="m-1 btn btn-primary"
-							style={{
-								position: "relative",
-							}}
-							onClick={handleSearchClick}
-						>
-							Search
-						</button>
-					</div>
-				</StandaloneSearchBox>
-			</GoogleMap>
-		</LoadScript>
+					{/* Child components, such as markers, info windows, etc. */}
+					<>
+						{markers.map((marker) => {
+							return (
+								<MarkerGroup key={marker._id} marker={marker} />
+							);
+						})}
+						{newMarker ? <NewMarker marker={newMarker} /> : null}
+					</>
+					<StandaloneSearchBox>
+						<div className="col text-center ">
+							<input
+								className="mt-1 form-input "
+								type="text"
+								placeholder="Search for your location"
+								value={search}
+								onChange={(e) => setSearch(e.target.value)}
+								onBlur={(e) => setSearch(e.target.value)}
+								style={{
+									boxSizing: `border-box`,
+									border: `1px solid transparent`,
+									width: `240px`,
+									height: `32px`,
+									padding: `0 12px`,
+									borderRadius: `3px`,
+									boxShadow: `0 2px 6px rgba(0, 0, 0, 0.3)`,
+									fontSize: `14px`,
+									outline: `none`,
+									textOverflow: `ellipses`,
+									position: "relative",
+								}}
+							/>
+							<button
+								className="m-1 btn btn-primary"
+								style={{
+									position: "relative",
+								}}
+								onClick={handleSearchClick}
+							>
+								Search
+							</button>
+							<span
+								className="float-right"
+								style={{
+									margin:"0px",
+									fontSize:"larger",
+									fontWeight:"",
+									position: "relative",
+								}}
+							>
+								Right Click to add new bathroom
+							</span>
+						</div>
+					</StandaloneSearchBox>
+				</GoogleMap>
+			</LoadScript>
+		</div>
 	) : (
 		<></>
 	);

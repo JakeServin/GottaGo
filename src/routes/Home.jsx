@@ -6,7 +6,7 @@ import picture6 from "../../src/pictures/review.png"
 
 const Home = () => {
   return (
-    <div class="container">
+    <div class="container content-div">
       <div>
         <div id="home">
           <div class="row mt-4 rounded">

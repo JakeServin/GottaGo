@@ -4,7 +4,7 @@ import picture2 from "../../src/pictures/jake.jpeg"
 
 const About = () => {
   return (
-    <div class="container text-left mt-5">
+    <div class="container text-left mt-5 content-div">
       <div class="row">
         <div className="col">
       <div class="card-body">
