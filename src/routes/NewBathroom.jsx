@@ -10,7 +10,10 @@ import {
   StandaloneSearchBox
 } from "@react-google-maps/api";
 import axios from "axios";
-
+const libraries = ["places"];
+let mapOptions = {
+	   zoom: 15,
+};
 
 const NewBathroom = () => {
   const [map, setMap] = React.useState(null);
@@ -22,14 +25,14 @@ const NewBathroom = () => {
   const lng = searchParams.get('lng')
   const [center, setCenter] = useState({
     lat: parseFloat(lat),
-		lng: parseFloat(lng),
+	lng: parseFloat(lng),
   });
   const [newMarker, setNewMarker] = useState({
     lat: parseFloat(lat),
     lng: parseFloat(lng),
-  });
-  const navigate = useNavigate();
-  const isLoaded = true;
+});
+const navigate = useNavigate();
+const isLoaded = true;
 
   const containerStyle = {
 		width: "100%",
@@ -86,17 +89,14 @@ const NewBathroom = () => {
     const response = await axios.post("http://localhost:5500/newbathroom", newBathroom).then(res=> res.data);
     if (response != null) navigate('/find')
   }
-  var mapOptions = {
-		zoom: 18,
-  };
 
 	return (
-		<div>
-			<h1 className="">Add new bathroom</h1>
-			<div className="container m-5 p-5">
-				<div className="row">
+		<div className="content-div d-flex justify-content-center align-items-center bg-grey">
+			<div className="container m-5 p-5 newbathroom-wrapper bg-white ">
+				<h1 className="mb-3">Add new bathroom</h1>
+				<div className="row d-flex justify-content-center ">
 					<div className="col">
-						<div className="form-floating my-3">
+						<div className="form-floating mb-3">
 							<input
 								type="text"
 								className="form-control"
@@ -145,11 +145,10 @@ const NewBathroom = () => {
 						</div>
 					</div>
 					<div className="col">
-						<h4>Right-Click to add bathroom</h4>
 						{isLoaded ? (
 							<LoadScript
 								googleMapsApiKey="AIzaSyDXZWVRUBqSZpQk8uAqlPqxjZrQ6i45yCc"
-								libraries={["places"]}
+								libraries={libraries}
 							>
 								<GoogleMap
 									options={mapOptions}
@@ -161,14 +160,16 @@ const NewBathroom = () => {
 									{/* Child components, such as markers, info windows, etc. */}
 									{newMarker ? (
 										<Marker
-											icon={{
-												// scaledSize:
-												// 	new window.google.maps.Size(
-												// 		50,
-												// 		50
-												// 	),
-												// url: icon,
-											}}
+											icon={
+												{
+													// scaledSize:
+													// 	new window.google.maps.Size(
+													// 		50,
+													// 		50
+													// 	),
+													// url: icon,
+												}
+											}
 											position={{
 												lat: newMarker.lat,
 												lng: newMarker.lng,

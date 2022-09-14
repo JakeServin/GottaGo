@@ -24,9 +24,10 @@ const MarkerGroup = ({ marker }) => {
 		<>
 			<Marker
 				onClick={handleClick}
-				key={marker.name}
+				key={marker._id}
 				icon={{
-					scaledSize: new window.google.maps.Size(50,50),
+					scaledSize: new window.google.maps.Size(60,60),
+
 					url: icon,
 				}}
 				position={{
@@ -35,7 +36,8 @@ const MarkerGroup = ({ marker }) => {
 				}}
 			/>
 			{isOpen ? (
-				<InfoWindow
+			  <InfoWindow
+				  key={`IF${marker._id}`}
 					onCloseClick={handleCloseClick}
 					position={{
 						lat: marker.lat + 0.00001,
