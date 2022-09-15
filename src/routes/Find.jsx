@@ -40,6 +40,7 @@ const Find = () => {
 	});
 	const [zoom, setZoom] = useState(15)
 	const [markers, setMarkers] = useState([]);
+	
 
 	useEffect(() => {
 		const getBathrooms = async () => {
@@ -48,6 +49,7 @@ const Find = () => {
 				.then((res) => setMarkers(res.data));
 		};
 		getBathrooms();
+		window.scrollTo(0, 1);
 	}, []);
 
 	
@@ -108,38 +110,41 @@ const Find = () => {
 						{newMarker ? <NewMarker marker={newMarker} /> : null}
 					</>
 					<StandaloneSearchBox>
-						<div className="col text-center ">
-							<input
-								className="mt-1 form-input "
-								type="text"
-								placeholder="Search for your location"
-								value={search}
-								onChange={(e) => setSearch(e.target.value)}
-								onBlur={(e) => setSearch(e.target.value)}
-								style={{
-									boxSizing: `border-box`,
-									border: `1px solid transparent`,
-									width: `240px`,
-									height: `32px`,
-									padding: `0 12px`,
-									borderRadius: `3px`,
-									boxShadow: `0 2px 6px rgba(0, 0, 0, 0.3)`,
-									fontSize: `14px`,
-									outline: `none`,
-									textOverflow: `ellipses`,
-									position: "relative",
-								}}
-							/>
-							<button
-								className="m-1 btn btn-primary"
-								style={{
-									position: "relative",
-								}}
-								onClick={handleSearchClick}
-							>
-								Search
-							</button>
-							<span
+						<div className="col text-center d-flex flex-column justify-content-end align-items-center flex-grow">
+							<div>
+								<input
+									className=" form-input "
+									type="text"
+									placeholder="Search for your location"
+									value={search}
+									onChange={(e) => setSearch(e.target.value)}
+									onBlur={(e) => setSearch(e.target.value)}
+									style={{
+										boxSizing: `border-box`,
+										border: `1px solid transparent`,
+										width: `240px`,
+										height: `32px`,
+										padding: `0 12px`,
+										margin: `auto 0`,
+										borderRadius: `3px`,
+										boxShadow: `0 2px 6px rgba(0, 0, 0, 0.3)`,
+										fontSize: `14px`,
+										outline: `none`,
+										textOverflow: `ellipses`,
+										position: "relative",
+									}}
+								/>
+								<button
+									className="m-1 btn btn-primary"
+									style={{
+										position: "relative",
+									}}
+									onClick={handleSearchClick}
+								>
+									Search
+								</button>
+							</div>
+							{/* <span
 								className="float-right"
 								style={{
 									margin:"0px",
@@ -149,7 +154,7 @@ const Find = () => {
 								}}
 							>
 								Right Click to add new bathroom
-							</span>
+							</span> */}
 						</div>
 					</StandaloneSearchBox>
 				</GoogleMap>
