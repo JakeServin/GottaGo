@@ -7,6 +7,8 @@ import About from './routes/About';
 import Find from './routes/Find';
 import BathroomInfo from './routes/BathroomInfo';
 import NewBathroom from './routes/NewBathroom';
+import SignIn from './routes/SignIn';
+import Register from './routes/Register';
 
 function App() {
   return (
@@ -19,8 +21,10 @@ function App() {
 					<Route path="/find" element={<Find />} />
 					<Route path="/bathroominfo" element={<BathroomInfo />} />
 					<Route path="/newbathroom" element={<NewBathroom />} />
+					<Route path="/signin" element={<SignIn />} />
+					<Route path="/register" element={<Register />} />
 				</Routes>
-				<Footer />
+
 			</div>
 		</BrowserRouter>
   );
