@@ -6,7 +6,7 @@ import {
 import icon from '../pictures/icon.png'
 const divStyle = {
 	background: `white`,
-	padding: 15,
+	padding: "15px",
 };
 
 const MarkerGroup = ({ marker }) => {
