@@ -23,6 +23,11 @@ GottaGo is a website that helps users find a public restroom in their area. User
 
 ### About Page:
 
+### Find a Bathroom Page:
+
+#### Add a bathroom:
+
+#### Review a Bathroom:
 
 
 #### Built by @JakeServin and @awbutler
