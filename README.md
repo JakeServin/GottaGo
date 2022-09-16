@@ -52,3 +52,5 @@ GottaGo is a website that helps users find a public restroom in their area. User
 <img src="images/bathroominfo.png" width=""/>
 
 #### Built by @JakeServin and @awbutler
+
+#### Check us out on LinkedIn: [Jake](https://www.linkedin.com/in/jakeservin/) [Drew](https://www.linkedin.com/in/drewbutlermba/)
