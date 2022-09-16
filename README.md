@@ -7,10 +7,15 @@ GottaGo is a website that helps users find a public restroom in their area. User
 ## Technologies used:
 
 -Javascript
+
 -React
+
 -Redux
+
 -MongoDB
+
 -Bootstrap
+
 -CSS
 
 ### API:
@@ -29,14 +34,19 @@ GottaGo is a website that helps users find a public restroom in their area. User
 
 ### Find a Bathroom Page:
 
+-Search bar allows user to input location with town name or zip code to find bathrooms in their area quickly
 <img src="images/Findabathroom.png" width="650"/>
 
 #### Add a bathroom:
 
-<img src="images/Addnew.png" width="650"/>
+-Add type, description, link to directions
+
+<img src="images/Addnew.png" width=""/>
 
 #### Bathroom info:
 
-<img src="images/bathroominfo.png" width="650"/>
+-Link allows user to click for Google Maps instructions
+
+<img src="images/bathroominfo.png" width=""/>
 
 #### Built by @JakeServin and @awbutler
