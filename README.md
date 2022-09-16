@@ -37,6 +37,8 @@ GottaGo is a website that helps users find a public restroom in their area. User
 -Search bar allows user to input location with town name or zip code to find bathrooms in their area quickly
 <img src="images/Findabathroom.png" width="650"/>
 
+### Reviews Page:
+
 #### Add a bathroom:
 
 -Add type, description, link to directions
