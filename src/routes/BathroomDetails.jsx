@@ -194,8 +194,7 @@ const BathroomDetails = ({connectedUser,
 									</a>
 								) : (
 										<Link
-											to= "/signin"
-										onClick={handleReviewClick}
+											to="/signin"
 										className="text-center"
 									>
 										Sign in to add review
