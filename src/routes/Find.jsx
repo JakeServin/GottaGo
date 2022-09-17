@@ -81,7 +81,7 @@ const Find = () => {
 	useEffect(() => {
 		const getBathrooms = async () => {
 			await axios
-				.get("http://localhost:5500/bathrooms")
+				.get("https://gotta-go-app.herokuapp.com/bathrooms")
 				.then((res) => setMarkers(res.data));
 		};
 		getBathrooms();
