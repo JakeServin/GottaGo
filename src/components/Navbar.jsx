@@ -21,7 +21,7 @@ const Navbar = (props) => {
 			});
 		};
 		getUser();
-	}, [loggedIn]);
+	}, [loggedIn, setLoggedOut]);
     
 
 	// Signout if button is pressed;
