@@ -26,7 +26,7 @@ const Navbar = (props) => {
 
 	// Signout if button is pressed;
 	const handleSignout = async () => {
-		await axios.get("/logout");
+		await axios.get("https://gotta-go-app.herokuapp.com//logout");
 		setLoggedOut();
 	};
 	return (
