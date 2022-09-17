@@ -192,13 +192,13 @@ const BathroomDetails = ({connectedUser,
 										Click here to add a new review
 									</a>
 								) : (
-									<a
-										href="/signin"
+										<Link
+											to= "/signin"
 										onClick={handleReviewClick}
 										className="text-center"
 									>
 										Sign in to add review
-									</a>
+									</Link>
 								)}
 								<div
 									style={{ display: show ? "" : "none" }}
