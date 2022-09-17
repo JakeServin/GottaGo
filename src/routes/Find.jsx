@@ -27,7 +27,43 @@ let center = {
 let mapOptions = {
 	zoom: 15,
 };
-console.log(process.env)
+
+// Ensure touches occur rapidly
+const delay = 500
+// Sequential touches must be in close vicinity
+const minZoomTouchDelta = 10
+
+// Track state of the last touch
+let lastTapAt = 0
+let lastClientX = 0
+let lastClientY = 0
+
+const preventDoubleTapZoom = (event)=> {
+  // Exit early if this involves more than one finger (e.g. pinch to zoom)
+  if (event.touches.length > 1) {
+    return
+  }
+
+  const tapAt = new Date().getTime()
+  const timeDiff = tapAt - lastTapAt
+  const { clientX, clientY } = event.touches[0]
+  const xDiff = Math.abs(lastClientX - clientX)
+  const yDiff = Math.abs(lastClientY - clientY)
+  if (
+    xDiff < minZoomTouchDelta &&
+    yDiff < minZoomTouchDelta &&
+    event.touches.length === 1 &&
+    timeDiff < delay
+  ) {
+    event.preventDefault()
+    // Trigger a fake click for the tap we just prevented
+    event.target.click()
+  }
+  lastClientX = clientX
+  lastClientY = clientY
+  lastTapAt = tapAt
+}
+
 const Find = () => {
 	const isLoaded  = true
 
@@ -108,9 +144,14 @@ const Find = () => {
 						})}
 						{newMarker ? <NewMarker marker={newMarker} /> : null}
 					</>
-					<StandaloneSearchBox>
-						<div className="col text-center d-flex flex-column justify-content-end align-items-center flex-grow">
-							<div>
+					<StandaloneSearchBox onTouchStart={preventDoubleTapZoom}>
+						<div className="find-wrapper col text-center d-flex justify-content-center align-items-center flex-grow">
+							<div
+								className="align-self-end"
+								style={{
+									position: "relative",
+								}}
+							>
 								<input
 									className=" form-input "
 									type="text"
@@ -119,18 +160,20 @@ const Find = () => {
 									onChange={(e) => setSearch(e.target.value)}
 									onBlur={(e) => setSearch(e.target.value)}
 									style={{
+										float: "end",
 										boxSizing: `border-box`,
 										border: `1px solid transparent`,
-										width: `240px`,
+										width: `210px`,
 										height: `32px`,
 										padding: `0 12px`,
-										margin: `auto 0`,
+										margin: ` 0`,
 										borderRadius: `3px`,
 										boxShadow: `0 2px 6px rgba(0, 0, 0, 0.3)`,
 										fontSize: `14px`,
 										outline: `none`,
 										textOverflow: `ellipses`,
 										position: "relative",
+										bottom: "0",
 									}}
 								/>
 								<button

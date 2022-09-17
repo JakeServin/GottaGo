@@ -4,7 +4,7 @@ import {FaUser} from "react-icons/fa"
 
 const Footer = () => {
   return (
-			<div className="footer d-flex justify-content-center py-2 align-items-center bg-primary sticky-bottom">
+			<div className="footer d-flex justify-content-center py-2 align-items-center bg-primary ">
 				<span className='text-white pt-1'>Created by: Jake Servin&nbsp;&nbsp;</span>
 				<a
 					href="https://github.com/JakeServin"

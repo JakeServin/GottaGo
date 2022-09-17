@@ -8,6 +8,8 @@ html, body, #app, #app>div, #root {
   margin: 0;
 }
 
+
+
 .App {
   text-align: center;
 }
@@ -82,3 +84,11 @@ html, body, #app, #app>div, #root {
     max-height: 350px;
     object-fit: cover;
 }
+
+@media screen and (max-width: 480px) {
+  .find-wrapper{
+    height: 90vh;
+    margin-right: 10px;
+  }
+}
+

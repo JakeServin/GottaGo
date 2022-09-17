@@ -8,7 +8,7 @@ const About = () => {
 		<>
 			<div className="content-div">
 				<div className="text-left">
-					<div className="about-header mb-5 p-5 d-flex flex-column justify-content-center align-items-center ">
+					<div className="about-header mb-5 p-md-5 d-flex flex-column justify-content-center align-items-center ">
 						<div className="col-10 ">
 							<div className="text-left mx-3 ">
 								<h1 className="mb-3 text-primary">
@@ -33,7 +33,7 @@ const About = () => {
 					</div>
 					<div className="container mt-5">
 						<h3>About Us</h3>
-						<div className="row">
+						<div className="row  d-flex justify-content-center align-items-center">
 							<div class="row aboutContent col-12 col-md-6   d-flex justify-content-center align-items-center">
 								<div class="col-12 col-md-4  d-flex flex-column justify-content-center align-items-center">
 									<img
