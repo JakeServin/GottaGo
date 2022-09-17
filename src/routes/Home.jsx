@@ -24,12 +24,12 @@ const Home = () => {
 										application!
 									</p>
 									<div class="d-flex">
-										<a
-											href="/find"
+										<Link
+											to="/find"
 											class="btn my-3 p-2 btn-warning home-btn btn-lg btn-block"
 										>
 											Find a bathroom
-										</a>
+										</Link>
 									</div>
 								</div>
 								<div class="col-lg-7">
