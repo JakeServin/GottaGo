@@ -20,7 +20,7 @@ const SignIn = (props) => {
 			method: "POST",
 			data: user,
 			withCredentials: true,
-			url: "/login_user",
+			url: "https://gotta-go-app.herokuapp.com/login_user",
 		}).then((res) => res.data);
 		console.log(typeof signedIn);
 		if (typeof signedIn === "object") {
