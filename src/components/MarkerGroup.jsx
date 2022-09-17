@@ -49,13 +49,13 @@ const MarkerGroup = ({ marker }) => {
 							<strong>Type:</strong> {marker.type}
 						</p>
 						<p>{marker.description}</p>
-						{/* <a
+						<a
 							className="btn btn-info text-light me-3"
-							href={"#"}
+							href={`/details?id=${marker._id}`}
 							target="blank"
 						>
 							More info
-						</a> */}
+						</a>
 						<a
 							className="ms-auto btn btn-primary"
 							href={`https://www.google.com/maps/dir/?api=1&destination=${marker.lat}%2C${marker.long}`}
