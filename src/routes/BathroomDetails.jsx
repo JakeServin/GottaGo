@@ -48,21 +48,27 @@ const BathroomDetails = ({connectedUser,
     useEffect(() => {
 		const getBathroomInfo = async () => {
 			await axios
-			.get(`http://localhost:5500/get_bathroom?id=${bathroomId}`)
-			.then((res) => {
-				setBathroomDetails(res.data)
-				setCenter({
-					lat: parseFloat(res.data.lat),
-					lng: parseFloat(res.data.long),
-				})
-				setNewMarker({
-					lat: parseFloat(res.data.lat),
-					lng: parseFloat(res.data.long),
-				})
-			});
+				.get(
+					`https://gotta-go-app.herokuapp.com/get_bathroom?id=${bathroomId}`
+				)
+				.then((res) => {
+					setBathroomDetails(res.data);
+					setCenter({
+						lat: parseFloat(res.data.lat),
+						lng: parseFloat(res.data.long),
+					});
+					setNewMarker({
+						lat: parseFloat(res.data.lat),
+						lng: parseFloat(res.data.long),
+					});
+				});
 		};
 		const getReviews = async () => {
-			await axios.get(`http://localhost:5500/get_reviews?id=${bathroomId}`).then(res=> setReviews(res.data))
+			await axios
+				.get(
+					`https://gotta-go-app.herokuapp.com/get_reviews?id=${bathroomId}`
+				)
+				.then((res) => setReviews(res.data));
 		}
 		getBathroomInfo();
 		getReviews();
