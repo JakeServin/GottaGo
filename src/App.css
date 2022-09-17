@@ -39,7 +39,6 @@ html, body, #app, #app>div, #root {
 }
 .content-div {
   flex: 1 1 auto;
-  overflow: auto;
 }
 
 .newbathroom-wrapper {
