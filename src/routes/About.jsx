@@ -64,9 +64,7 @@ const About = () => {
 								<div class="aboutText col-11 col-md mt-3 my-sm-5 mx-2 mb-5">
 									<h4>Drew Butler</h4>
 									<p>
-										A software engineer with a passion for
-										problem-solving, learning new concepts,
-										and creating innovative new projects.
+										Salesperson and now Software Engineer - my passion is linking people to solutions and creating mutually beneficial relationships. I live in San Antonio but still eat Chipotle three times a week. Love a good simile.
 									</p>
 									<p></p>
 								</div>
