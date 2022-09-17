@@ -7,15 +7,15 @@ const cookieParser = require("cookie-parser");
 const PORT = process.env.PORT || 5500;
 const Router = require('./routes')
 const app = express();
-app.use(cors({origin: '*'}))
-
-const username = "admin";
-const password = "digitalcrafts1234";
-const cluster = "bathroomdata.c16u3uc";
-const dbname = "myFirstDatabase";
+require("dotenv").config();
 
 
+const username = process.env.MONGO_USER;
+const password = process.env.MONGO_PASS;
+const cluster = process.env.MONGO_CLUSTER;
 
+
+app.use(cors({ origin: '*' }))
 // Middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }))

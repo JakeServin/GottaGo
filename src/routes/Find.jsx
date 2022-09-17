@@ -27,7 +27,7 @@ let center = {
 let mapOptions = {
 	zoom: 15,
 };
-
+console.log(process.env)
 const Find = () => {
 	const isLoaded  = true
 
@@ -69,7 +69,7 @@ const Find = () => {
 	const handleSearchClick = async () => {
 		await axios
 			.get(
-				`http://api.positionstack.com/v1/forward?access_key=33c4db967cfae0438ac6e8b0db34bd12&query=${search}`
+				`http://api.positionstack.com/v1/forward?access_key=${process.env.REACT_APP_POSITION_STACK_KEY}&query=${search}`
 			)
 			.then((res) => {
 				console.log(res.data.data[0]);
@@ -87,7 +87,7 @@ const Find = () => {
 	return isLoaded ? (
 		<div className="content-div">
 			<LoadScript
-				googleMapsApiKey="AIzaSyDXZWVRUBqSZpQk8uAqlPqxjZrQ6i45yCc"
+				googleMapsApiKey={process.env.REACT_APP_GOOGLE_KEY}
 				libraries={Libraries}
 			>
 				<GoogleMap
