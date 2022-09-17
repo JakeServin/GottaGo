@@ -177,12 +177,23 @@ const BathroomDetails = ({connectedUser,
 								) : (
 									<div>No reviews yet</div>
 								)}
-								<a
-									onClick={handleReviewClick}
-									className="text-center"
-								>
-									Click here to add a new review
-								</a>
+								{loggedIn ? (
+									<a
+										href="#"
+										onClick={handleReviewClick}
+										className="text-center"
+									>
+										Click here to add a new review
+									</a>
+								) : (
+									<a
+										href="/signin"
+										onClick={handleReviewClick}
+										className="text-center"
+									>
+										Sign in to add review
+									</a>
+								)}
 								<div
 									style={{ display: show ? "" : "none" }}
 									className="p-4"
