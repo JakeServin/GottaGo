@@ -121,7 +121,10 @@ const Find = () => {
 	
 
 	return isLoaded ? (
-		<div className="content-div">
+		<div className="content-div"
+			style={{
+			touchAction: "none"
+		}}>
 			<LoadScript
 				googleMapsApiKey={process.env.REACT_APP_GOOGLE_KEY}
 				libraries={Libraries}
