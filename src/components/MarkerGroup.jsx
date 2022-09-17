@@ -58,7 +58,7 @@ const MarkerGroup = ({ marker }) => {
 						</Link>
 						<a
 							className="ms-auto btn btn-primary"
-							to={`https://www.google.com/maps/dir/?api=1&destination=${marker.lat}%2C${marker.long}`}
+							href={`https://www.google.com/maps/dir/?api=1&destination=${marker.lat}%2C${marker.long}`}
 							target="blank"
 						>
 							Get Directions
