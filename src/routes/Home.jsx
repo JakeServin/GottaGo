@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import picture3 from "../../src/pictures/map picture.png"
 import picture4 from "../../src/pictures/maps-icon-8214.png"
 import picture5 from "../../src/pictures/add.png"
