@@ -53,17 +53,16 @@ const MarkerGroup = ({ marker }) => {
 						<Link
 							className="btn btn-info text-light me-3"
 							to={`/details?id=${marker._id}`}
-							target="blank"
 						>
 							More info
 						</Link>
-						<Link
+						<a
 							className="ms-auto btn btn-primary"
 							to={`https://www.google.com/maps/dir/?api=1&destination=${marker.lat}%2C${marker.long}`}
 							target="blank"
 						>
 							Get Directions
-						</Link>
+						</a>
 					</div>
 				</InfoWindow>
 			) : null}
