@@ -12,7 +12,7 @@ const Navbar = (props) => {
 	useEffect(() => {
 		const getUser = async () => {
 			await axios
-				.get("https://gotta-go-app.herokuapp.com/current_user")
+				.get("/current_user")
 				.then((res) => {
 					setUser(res.data);
 					if (!res.data._id) {
