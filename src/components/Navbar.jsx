@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import axios from "axios";
 import picture7 from "../../src/pictures/icon.png";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 
 const Navbar = (props) => {
-    const { connectedUser, setUser, setLoggedIn, setLoggedOut, loggedIn } =
+    const { setUser, setLoggedIn, setLoggedOut, loggedIn } =
 		props;
 	console.log(props);
 	// Check req.user to see if user is currently logged in
