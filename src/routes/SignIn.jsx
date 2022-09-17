@@ -26,7 +26,7 @@ const SignIn = (props) => {
 		if (typeof signedIn === "object") {
 			setUser(signedIn);
 			setLoggedIn();
-			navigate("/");
+			navigate("/find");
 		} else {
 			console.log("DONT REDIRECT");
 		}

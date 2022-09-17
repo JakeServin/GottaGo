@@ -101,7 +101,7 @@ const BathroomDetails = ({connectedUser,
 	console.log(reviews)
 	return (
 		<div className="content-div d-flex justify-content-center align-items-center bg-grey">
-			<div className="container m-5 p-5 newbathroom-wrapper bg-white ">
+			<div className="container m-2 m-sm-5 p-3 p-sm-5 py-5 newbathroom-wrapper bg-white ">
 				<div className="row d-flex justify-content-center ">
 					<div className="col">
 						<h1 className="">{bathroomDetails.name} </h1>
@@ -130,7 +130,7 @@ const BathroomDetails = ({connectedUser,
 							<div>{bathroomDetails.description}</div>
 						</div>
 					</div>
-					<div className="col">
+					<div className="col-12 col-sm">
 						{isLoaded ? (
 							<LoadScript
 								googleMapsApiKey="AIzaSyDXZWVRUBqSZpQk8uAqlPqxjZrQ6i45yCc"

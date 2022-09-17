@@ -11,9 +11,9 @@ const Home = () => {
 			<div class="content-div">
 				<div className="">
 					<div id="home">
-						<div class="row rounded">
+						<div class="rounded">
 							<div className="hero-section px-5 d-flex justify-content-center align-items-center">
-								<div class="col-lg-5 text-white">
+								<div class="col-12 col-lg-5 text-white">
 									<h1 className="text-left">
 										Find a Local Public Bathroom
 									</h1>
@@ -42,14 +42,14 @@ const Home = () => {
 									/>
 								</div>
 							</div>
-							<div className="how-it-works my-5 p-5 d-flex flex-column justify-content-center align-items-center">
+							<div className="how-it-works mt-4 p-3 p-md-5 d-flex flex-column justify-content-center align-items-center">
 								<div class="text-center mb-5 text-primary">
 									<h1>How GottaGo Works</h1>
 								</div>
 								<div class="container">
 									<div class="row justify-content-md-center">
-										<div class="col-lg-3 me-5">
-											<div class="mb-3">
+										<div class="col-lg-3 me-5 mb-5">
+											<div class="mb-3 text-center">
 												<img width="175px" src={picture4}></img>
 											</div>
 											<div class="card-body">
@@ -61,11 +61,11 @@ const Home = () => {
 												</p>
 											</div>
 										</div>
-										<div class="col-lg-3 me-5">
-											<div class="mb-3">
+										<div class="col-lg-3 me-5 mb-5">
+											<div class="mb-3 text-center">
 												<img width="175px" src={picture5}></img>
 											</div>
-											<div class="card-body">
+											<div class="card-body ">
 												<h3 class="card-title text-success">Add</h3>
 												<p class="card-text">
 													Our app depends on users
@@ -74,8 +74,8 @@ const Home = () => {
 												</p>
 											</div>
 										</div>
-										<div class="col-lg-3">
-											<div class=" mb-3 ">
+										<div class="col-lg-3 mb-5">
+											<div class=" mb-3 text-center ">
 											  <img width="175px" height="175px" src={picture6}></img>
 											</div>
 											<div class="card-body">

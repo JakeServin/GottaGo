@@ -27,7 +27,7 @@ let center = {
 let mapOptions = {
 	zoom: 15,
 };
-console.log(process.env)
+
 const Find = () => {
 	const isLoaded  = true
 
@@ -109,8 +109,15 @@ const Find = () => {
 						{newMarker ? <NewMarker marker={newMarker} /> : null}
 					</>
 					<StandaloneSearchBox>
-						<div className="col text-center d-flex flex-column justify-content-end align-items-center flex-grow">
-							<div>
+						<div
+							className="find-wrapper col text-center d-flex justify-content-center align-items-center flex-grow"
+						>
+							<div
+								className="align-self-end"
+								style={{
+									position: "relative",
+								}}
+							>
 								<input
 									className=" form-input "
 									type="text"
@@ -119,18 +126,20 @@ const Find = () => {
 									onChange={(e) => setSearch(e.target.value)}
 									onBlur={(e) => setSearch(e.target.value)}
 									style={{
+										float: "end",
 										boxSizing: `border-box`,
 										border: `1px solid transparent`,
-										width: `240px`,
+										width: `210px`,
 										height: `32px`,
 										padding: `0 12px`,
-										margin: `auto 0`,
+										margin: ` 0`,
 										borderRadius: `3px`,
 										boxShadow: `0 2px 6px rgba(0, 0, 0, 0.3)`,
 										fontSize: `14px`,
 										outline: `none`,
 										textOverflow: `ellipses`,
 										position: "relative",
+										bottom: "0",
 									}}
 								/>
 								<button
