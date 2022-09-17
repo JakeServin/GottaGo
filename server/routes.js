@@ -2,8 +2,11 @@ const { application } = require('express');
 const express = require('express')
 const BathroomModel = require('./models/bathroom');
 const userModel = require("./models/user");
+const reviewModel = require('./models/review')
 const bcrypt = require("bcryptjs");
 const passport = require("passport");
+const ObjectId = require("mongodb").ObjectId;
+
 
 const app = express();
 
@@ -29,6 +32,39 @@ app.post('/newbathroom', async (req, res) => {
 	try {
 		await bathroom.save();
 		res.send(bathroom);
+	} catch (error) {
+		res.status(500).send(error);
+	}
+})
+
+app.get("/get_bathroom", async (req, res) => {
+	console.log(req.body)
+	const bathroom = await BathroomModel.findOne({ _id: ObjectId(req.query.id) });
+	try {
+		res.send(bathroom);
+	} catch (error) {
+		res.status(500).send(error);
+	}
+});
+
+
+app.post("/newreview", async (req, res) => {
+	const review = new reviewModel(req.body);
+
+	try {
+		await review.save();
+		res.send(review);
+	} catch (error) {
+		res.status(500).send(error);
+	}
+});
+
+app.get("/get_reviews", async (req, res) => {
+	console.log(req.query.id)
+	const reviews = await reviewModel.find({ bathroomId: `${req.query.id}` });
+
+	try {
+		res.send(reviews);
 	} catch (error) {
 		res.status(500).send(error);
 	}
