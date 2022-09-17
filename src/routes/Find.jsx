@@ -49,7 +49,6 @@ const Find = () => {
 				.then((res) => setMarkers(res.data));
 		};
 		getBathrooms();
-		window.scrollTo(0, 1);
 	}, []);
 
 	
