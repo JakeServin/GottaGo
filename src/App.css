@@ -63,3 +63,22 @@ html, body, #app, #app>div, #root {
   background-color: white;
   border-radius: 5px;
 }
+
+.hero-section {
+  height: 70vh;
+  background-color: var(--main-color);
+}
+
+.about-header {
+  height: 60vh;
+  background-color: whitesmoke;
+}
+.headshot {
+  
+    aspect-ratio: 1 / 1;
+    border-radius: 50%;
+    height: auto;
+    max-width: 350px;
+    max-height: 350px;
+    object-fit: cover;
+}

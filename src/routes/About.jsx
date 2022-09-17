@@ -7,81 +7,68 @@ const About = () => {
   return (
 		<>
 			<div className="content-div">
-				<div class="container text-left mt-5">
-					<div class="row">
-						<div className="col">
-							<div class="card-body">
-								<div class="text-left mx-3">
-									<h1 class="mb-3">
-										<strong>Gotta go?</strong>
-									</h1>
-									<h4>We've got a Solution for you</h4>
-									<p>
-										Gotta go was born out of a simple
-										premise. Oftentimes construction workers
-										are out at job sites and need to use a
-										restroom, but cannot do so at the
-										Homeowner's house. Gotta go solves that
-										problem by allowing the user to find
-										local public restrooms that are rated
-										and reviewed by other users. No more
-										googling and wasting time at lunch
-										breaks. When you've gotta go, You've
-										gotta go!
-									</p>
-								</div>
+				<div className="text-left">
+					<div className="about-header mb-5 p-5 d-flex flex-column justify-content-center align-items-center ">
+						<div className="col-10 ">
+							<div className="text-left mx-3 ">
+								<h1 className="mb-3 text-primary">
+									<strong>Gotta go?</strong>
+								</h1>
+								<h4 className="text-success">
+									We've got a Solution for you
+								</h4>
+								<p>
+									Gotta go was born out of a simple premise.
+									Oftentimes construction workers are out at
+									job sites and need to use a restroom, but
+									cannot do so at the Homeowner's house. Gotta
+									go solves that problem by allowing the user
+									to find local public restrooms that are
+									rated and reviewed by other users. No more
+									googling and wasting time at lunch breaks.
+									When you've gotta go, You've gotta go!
+								</p>
 							</div>
 						</div>
 					</div>
-					<div class="container mt-5">
-						<h3>Project Creators</h3>
-						<div class="row">
-							<div class="col-lg-3">
-								<div className="card m-b-3">
+					<div className="container mt-5">
+						<h3>About Us</h3>
+						<div className="row">
+							<div class="row aboutContent col-12 col-md-6   d-flex justify-content-center align-items-center">
+								<div class="col-12 col-md-4  d-flex flex-column justify-content-center align-items-center">
 									<img
 										src={picture2}
-										alt="author picture"
-										class="card-img-top img-thumbnail"
+										class="headshot mb-4"
+										width="100%"
 									/>
-									<div className="card-body">
-										<h5 className="card-title">
-											Jake Servin
-										</h5>
-										<p class="card-text">
-											Full Stack Developer
-										</p>
-										<a
-											href="https://www.linkedin.com/in/jakeservin/"
-											class="btn btn-primary"
-											role="button"
-										>
-											View LinkedIn
-										</a>
-									</div>
+								</div>
+								<div class="aboutText col-11 col-md mt-3 my-sm-5 mx-2 mb-5">
+									<h4>Jake Servin</h4>
+									<p>
+										A software engineer with a passion for
+										problem-solving, learning new concepts,
+										and creating innovative new projects.
+									</p>
+									<p></p>
 								</div>
 							</div>
-							<div class="col-lg-3">
-								<div className="card m-b-3">
+							<div class="row aboutContent col-md-6  d-flex justify-content-center align-items-center">
+								<div class="col-12 col-md-4  d-flex flex-column justify-content-center align-items-center">
 									<img
 										src={picture}
-										alt="author picture"
-										class="card-img-top img-thumbnail"
+										class="headshot mb-4"
+										width="100%"
+										height="auto"
 									/>
-									<div className="card-body">
-										<h5 className="card-title">
-											Drew Butler
-										</h5>
-										<p class="card-text">
-											Full Stack Developer
-										</p>
-										<a
-											href="https://www.linkedin.com/in/drewbutlermba/"
-											class="btn btn-primary"
-											role="button"
-										>
-											View LinkedIn
-										</a>
-									</div>
+								</div>
+								<div class="aboutText col-11 col-md mt-3 my-sm-5 mx-2 mb-5">
+									<h4>Drew Butler</h4>
+									<p>
+										A software engineer with a passion for
+										problem-solving, learning new concepts,
+										and creating innovative new projects.
+									</p>
+									<p></p>
 								</div>
 							</div>
 						</div>
