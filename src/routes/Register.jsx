@@ -17,7 +17,7 @@ const Register = () => {
 			method: "POST",
 			data: newUser,
 			withCredentials: true,
-			url: "/register_user",
+			url: "https://gotta-go-app.herokuapp.com/register_user",
 		}).then((res) => console.log(res));
 		navigate("/signin");
 	};
