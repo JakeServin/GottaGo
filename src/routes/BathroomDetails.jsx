@@ -98,7 +98,9 @@ const BathroomDetails = ({connectedUser,
 			username: connectedUser.userName
 
 		}
-		const response = await axios.post("http://localhost:5500/newreview", review).then(res=> res.data);
+		const response = await axios
+			.post("https://gotta-go-app.herokuapp.com/newreview", review)
+			.then((res) => res.data);
     	if (response != null) window.location.reload(false);
 	}
 
