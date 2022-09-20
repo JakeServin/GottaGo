@@ -101,7 +101,7 @@ const BathroomDetails = ({connectedUser,
 		const response = await axios
 			.post("https://gotta-go-app.herokuapp.com/newreview", review)
 			.then((res) => res.data);
-    	if (response != null) window.location.reload(false);
+    	if (response != null) navigate(`/details?id=${bathroomId}`);
 	}
 
 	const handleReviewClick = () => {
