@@ -46,7 +46,6 @@ const NewMarker = ({ marker }) => {
 						<Link
 							className="ms-auto btn btn-success"
 							to={`/newbathroom?lat=${marker.lat}&lng=${marker.long}`}
-							target="blank"
 						>
 							Add new bathroom
 						</Link>
