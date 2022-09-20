@@ -86,7 +86,9 @@ const isLoaded = true;
       description: description
     }
     console.log(newBathroom)
-    const response = await axios.post("http://localhost:5500/newbathroom", newBathroom).then(res=> res.data);
+    const response = await axios
+		.post("https://gotta-go-app.herokuapp.com/newbathroom", newBathroom)
+		.then((res) => res.data);
     if (response != null) navigate('/find')
   }
 
