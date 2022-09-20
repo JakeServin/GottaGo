@@ -42,13 +42,13 @@ const NewMarker = ({ marker }) => {
 					<div style={divStyle}>
 						<h3>{marker.name}</h3>
 						<p>Click the button below to share a new bathroom!</p>
-						<a
+						<Link
 							className="ms-auto btn btn-success"
-							href={`/newbathroom?lat=${marker.lat}&lng=${marker.long}`}
+							to={`/newbathroom?lat=${marker.lat}&lng=${marker.long}`}
 							target="blank"
 						>
 							Add new bathroom
-						</a>
+						</Link>
 					</div>
 				</InfoWindow>
 			) : null}
