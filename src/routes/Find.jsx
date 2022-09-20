@@ -109,7 +109,7 @@ const Find = () => {
 	const handleSearchClick = async () => {
 		await axios
 			.get(
-				`http://api.positionstack.com/v1/forward?access_key=${process.env.REACT_APP_POSITION_STACK_KEY}&query=${search}`
+				`https://api.positionstack.com/v1/forward?access_key=${process.env.REACT_APP_POSITION_STACK_KEY}&query=${search}`
 			)
 			.then((res) => {
 				console.log(res.data.data[0]);
