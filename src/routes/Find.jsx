@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import { Wrapper, Status,  } from "@googlemaps/react-wrapper";
 import {
 	GoogleMap,
@@ -65,7 +65,11 @@ const preventDoubleTapZoom = (event)=> {
 }
 
 const Find = () => {
-	const isLoaded  = true
+	const isLoaded = true
+	const scrollInto = useRef(null);
+	useEffect(() => {
+		scrollInto.current.scrollIntoView();
+	});
 
   const [map, setMap] = React.useState(null);
 	const [newMarker, setNewMarker] = useState();
@@ -204,6 +208,7 @@ const Find = () => {
 					</StandaloneSearchBox>
 				</GoogleMap>
 			</LoadScript>
+			<span ref={scrollInto}></span>
 		</div>
 	) : (
 		<></>
