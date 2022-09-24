@@ -14,6 +14,7 @@ import NewMarker from "../components/NewMarker";
 
 const Libraries = ['places']
 
+// Styling for map
 const containerStyle = {
 	width: "100vw",
 	height: "100%",
