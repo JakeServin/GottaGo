@@ -1,7 +1,8 @@
 # GottaGo
 
-
-<img src="images/gottagomockup.png" alt="barjournalMockup" width="300"/>
+<p align=center>
+<img src="images/gottagomockup.PNG" alt="barjournalMockup" width="300"/>
+</p>
 
 ## Overview
 
